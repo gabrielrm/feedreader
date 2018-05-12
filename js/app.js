@@ -9,17 +9,17 @@
 // The names and URLs to all of the feeds we'd like available.
 var allFeeds = [
     {
-        name: 'Udacity Blog',
-        url: 'http://blog.udacity.com/feed'
+        name: "Udacity Blog",
+        url: "http://blog.udacity.com/feed"
     }, {
-        name: 'CSS Tricks',
-        url: 'http://feeds.feedburner.com/CssTricks'
+        name: "CSS Tricks",
+        url: "http://feeds.feedburner.com/CssTricks"
     }, {
-        name: 'HTML5 Rocks',
-        url: 'http://feeds.feedburner.com/html5rocks'
+        name: "HTML5 Rocks",
+        url: "http://feeds.feedburner.com/html5rocks"
     }, {
-        name: 'Linear Digressions',
-        url: 'http://feeds.feedburner.com/udacity-linear-digressions'
+        name: "Linear Digressions",
+        url: "http://feeds.feedburner.com/udacity-linear-digressions"
     }
 ];
 
@@ -46,16 +46,16 @@ function init() {
 
      $.ajax({
        type: "POST",
-       url: 'https://rsstojson.udacity.com/parseFeed',
+       url: "https://rsstojson.udacity.com/parseFeed",
        data: JSON.stringify({url: feedUrl}),
        contentType:"application/json",
        success: function (result, status){
 
-                 var container = $('.feed'),
-                     title = $('.header-title'),
+                 var container = $(".feed"),
+                     title = $(".header-title"),
                      entries = result.feed.entries,
                      entriesLen = entries.length,
-                     entryTemplate = Handlebars.compile($('.tpl-entry').html());
+                     entryTemplate = Handlebars.compile($(".tpl-entry").html());
 
                  title.html(feedName);   // Set the header text
                  container.empty();      // Empty out all previous entries
@@ -93,11 +93,11 @@ google.setOnLoadCallback(init);
  * until the DOM is ready.
  */
 $(function() {
-    var container = $('.feed'),
-        feedList = $('.feed-list'),
-        feedItemTemplate = Handlebars.compile($('.tpl-feed-list-item').html()),
+    var container = $(".feed"),
+        feedList = $(".feed-list"),
+        feedItemTemplate = Handlebars.compile($(".tpl-feed-list-item").html()),
         feedId = 0,
-        menuIcon = $('.menu-icon-link');
+        menuIcon = $(".menu-icon-link");
 
     /* Loop through all of our feeds, assigning an id property to
      * each of the feeds based upon its index within the array.
@@ -116,18 +116,18 @@ $(function() {
      * the menu, load the feed, and prevent the default action
      * (following the link) from occurring.
      */
-    feedList.on('click', 'a', function() {
+    feedList.on("click", "a", function() {
         var item = $(this);
 
-        $('body').addClass('menu-hidden');
-        loadFeed(item.data('id'));
+        $("body").addClass("menu-hidden");
+        loadFeed(item.data("id"));
         return false;
     });
 
     /* When the menu icon is clicked on, we need to toggle a class
      * on the body to perform the hiding/showing of our menu.
      */
-    menuIcon.on('click', function() {
-        $('body').toggleClass('menu-hidden');
+    menuIcon.on("click", function() {
+        $("body").toggleClass("menu-hidden");
     });
 }());
