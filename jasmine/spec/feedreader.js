@@ -40,10 +40,16 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* Test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it("have names", function() {
+            allFeeds.forEach(function(array) {
+                var names = array.name;
+                expect(names).not.toBe("");
+            });
+        });
     });
 
 
