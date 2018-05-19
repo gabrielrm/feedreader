@@ -80,6 +80,7 @@ $(function() {
         });
     });
 
+
     describe("Initial Entries", function() {
 
         /* Test that ensures when the loadFeed function
@@ -97,6 +98,7 @@ $(function() {
             done();
         });
     });
+
 
     describe("New Feed Selection", function() {
 
